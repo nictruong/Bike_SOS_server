@@ -1,0 +1,16 @@
+{
+  "name": "firebaseproject",
+  "version": "1.0.0",
+  "description": "Attempt at bike app with firebase",
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "author": "Nicolas Truong",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.75.0"
+  }
+}
