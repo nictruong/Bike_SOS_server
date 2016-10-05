@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.post('/', function (req, res) {
+app.post('/register', function (req, res) {
 
 	var token = req.body.Token;
 
@@ -34,6 +34,16 @@ app.post('/', function (req, res) {
 
 		connection.end();
 	}
+
+	res.status(200).end();
+});
+
+app.post('/gpsSignal', function (req, res) {
+
+	var latitude = req.body.latitude;
+	var longitude = req.body.longitude;
+
+	console.lo(latitude + ", " + longitude);
 
 	res.status(200).end();
 });

@@ -1,7 +1,7 @@
 var request = require('request');
 var mysql = require('mysql');
 
-function sendNotification(tokens, message) {
+function sendNotification(tokens, data) {
 	request({
 		url: 'https://fcm.googleapis.com/fcm/send',
 		method: 'POST',
@@ -11,7 +11,7 @@ function sendNotification(tokens, message) {
 		},
 		body: JSON.stringify({
 			'registration_ids': tokens,
-			'data': message
+			'data': data
 		}),
 	}, function(error, response, body) {
 		if (error) {
@@ -32,7 +32,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 var tokens = [];
-var message = '';
+var data = '';
 
 connection.query('SELECT token FROM users', function (err, rows, fields) {
 	if (err) throw err;
@@ -43,14 +43,16 @@ connection.query('SELECT token FROM users', function (err, rows, fields) {
 		}
 	}
 
-	message = {
-		'message': 'TEST TEST'
+	data = {
+		'message': 'User123 needs help with a broken chain!',
+		'gpsCoordLong': '123',
+		'gpsCoordLat': '456'
 	}
 
-	console.log(message);
+	console.log(data);
 	console.log(tokens);
 
-	sendNotification(tokens, message);
+	sendNotification(tokens, data);
 });
 
 connection.end();
