@@ -43,7 +43,7 @@ app.post('/gpsSignal', function (req, res) {
 	var latitude = req.body.latitude;
 	var longitude = req.body.longitude;
 
-	console.lo(latitude + ", " + longitude);
+	console.log(latitude + ", " + longitude);
 
 	res.status(200).end();
 });
